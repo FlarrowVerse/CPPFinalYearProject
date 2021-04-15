@@ -1,0 +1,5 @@
+scipy
+librosa
+tensorflow-cpu
+matplotlib
+scikit-fuzzy
