@@ -9,12 +9,12 @@ from global_vars import *
 def stft(filename):
 	audio, sr = librosa.load(filename)
 
-	print('Sampling Rate:',sr)
-	print('Audio shape:',audio.shape, audio.dtype)
+	# print('Sampling Rate:',sr)
+	# print('Audio shape:',audio.shape, audio.dtype)
 
 	freq_domain_data = librosa.stft(audio, hop_length=HOP_SIZE, n_fft=FRAME_SIZE)
 
-	print('STFT shape:',freq_domain_data.shape, freq_domain_data.dtype)
+	# print('STFT shape:',freq_domain_data.shape, freq_domain_data.dtype)
 	
 	# plot_stft(freq_domain_data, sr)
 	return freq_domain_data
@@ -30,7 +30,7 @@ def plot_stft(freq_domain_data, sr):
 			break
 
 def pickle_dump(data, dirname):
-	index = len(os.listdir(os.path.join(pickle_data_dir, dirname))) + 1
+	index = len(os.listdir(os.path.join(pickle_data_dir, dirname))) + 1	
 	pickle_file = open(os.path.join(pickle_data_dir, dirname, str(index)+'.pkl'), 'wb')
 	pickle.dump(data, pickle_file)
 	pickle_file.close()
