@@ -15,7 +15,8 @@ def stft(filename):
 	freq_domain_data = librosa.stft(audio, hop_length=HOP_SIZE, n_fft=FRAME_SIZE)
 
 	# print('STFT shape:',freq_domain_data.shape, freq_domain_data.dtype)
-	
+	# print('Frequencies:', len(librosa.fft_frequencies(sr=sr, n_fft=FRAME_SIZE)))
+
 	# plot_stft(freq_domain_data, sr)
 	return freq_domain_data
 
