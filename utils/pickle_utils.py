@@ -5,7 +5,8 @@ from global_vars import *
 
 def calculate_ideal_affinity(data):
 	Y = np.ndarray((N_STFT_SAMPLES, len(data)))
-	print(Y)
+	print(len(data[0]))
+	print(len(data[1]))
 	return Y
 
 '''

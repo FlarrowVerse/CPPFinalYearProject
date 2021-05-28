@@ -46,7 +46,7 @@ def mix(speaker_dict, file_nums, SAMPLE_LEN, SAMPLE_RATE):
 		print(speaker_file)
 
 		# performing stft on speaker file
-		stft_data = stft(speaker_file)
+		stft_data = stft(speaker_file, SAMPLE_LEN)
 		pickle_dump(stft_data, 'speaker_'+str(i+1))
 
 		# mixing data
@@ -65,7 +65,7 @@ def mix(speaker_dict, file_nums, SAMPLE_LEN, SAMPLE_RATE):
 	mix_file = os.path.join(raw_data_dir, 'mix', 'mix_'+str(index)+'.wav')
 	
 	sf.write(mix_file, mix_data, SAMPLE_RATE)
-	pickle_dump(stft(mix_file), 'mix')
+	pickle_dump(stft(mix_file, SAMPLE_LEN), 'mix')
 
 
 #util to return a list of files for a speaker

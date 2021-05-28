@@ -6,13 +6,13 @@ import matplotlib.pyplot as plt
 
 from global_vars import *
 
-def stft(filename):
+def stft(filename, sample_len):
 	audio, sr = librosa.load(filename)
 
 	# print('Sampling Rate:',sr)
 	# print('Audio shape:',audio.shape, audio.dtype)
 
-	freq_domain_data = librosa.stft(audio, hop_length=HOP_SIZE, n_fft=FRAME_SIZE)
+	freq_domain_data = librosa.stft(audio[:sample_len], hop_length=HOP_SIZE, n_fft=FRAME_SIZE)
 
 	# print('STFT shape:',freq_domain_data.shape, freq_domain_data.dtype)
 	# print('Frequencies:', len(librosa.fft_frequencies(sr=sr, n_fft=FRAME_SIZE)))
