@@ -21,9 +21,10 @@ def stft(filename, sample_len):
 	return freq_domain_data
 
 def plot_stft(freq_domain_data, sr):
-	print('Frequencies: ', librosa.fft_frequencies(sr=sr, n_fft=FRAME_SIZE).shape)
+	print('Frequencies: ', librosa.fft_frequencies(sr=sr, n_fft=FRAME_SIZE))
+	print(freq_domain_data.shape)
 	for freq in range(librosa.fft_frequencies(sr=sr, n_fft=FRAME_SIZE).shape[0]):
-		plt.plot(librosa.fft_frequencies(sr=sr, n_fft=FRAME_SIZE), np.abs(freq_domain_data[:, freq]))
+		plt.plot(librosa.fft_frequencies(sr=sr, n_fft=FRAME_SIZE), np.abs(freq_domain_data[:, :]))
 		plt.show()
 
 		choice = input('Continue?(Y/N):')
