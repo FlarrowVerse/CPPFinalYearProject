@@ -3,3 +3,4 @@ librosa
 tensorflow-cpu
 matplotlib
 scikit-fuzzy
+keras-visualizer

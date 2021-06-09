@@ -60,11 +60,14 @@ def generate_yy_t():
 			
 		Y = calculate_ideal_affinity(speaker_data)
 		print(Y.shape)
-		Y_t = np.transpose(Y)
-		print(Y_t.shape)		
+		
+		for i in range(0, len(Y), 300):
+			Y_batch = Y[max(0, i-300):i, :]
+			Yt_batch = np.transpose(Y_batch)
+			# print(Y_batch.shape, 'x', Yt_batch.shape)
 
-		YY_t = np.dot(Y, Y_t)
-		print(YY_t.shape)
+			YYt_batch = np.dot(Y_batch, Yt_batch)
+			# print(YYt_batch.shape)
 
 
 
