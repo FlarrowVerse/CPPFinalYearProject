@@ -13,6 +13,16 @@ class BidirectionalModel:
         self.fw_keep_prob = fw_keep_prob
         self.rec_keep_prob = rec_keep_prob
 
+    def loss(self, V, Y):
+        V_t = np.transpose(V)
+        VV_t = np.dot(V, V_t)
+
+        Y_t = np.transpose(Y)
+        YY_t = np.dot(Y, Y_t)
+
+        diff = np.subtract(VV_t, YY_t)
+        return diff
+
     def create_model(self):
         print(CELLS)
         print(DROPOUT_PROBABILITY)
@@ -50,7 +60,7 @@ class BidirectionalModel:
 
         opt = tf.keras.optimizers.Adam(lr=LEARNING_RATE, decay=DECAY)
         model.compile(
-            loss='sparse_categorical_crossentropy',
+            loss=self.loss,
             optimizer=opt,
             metrics=['accuracy']
         )
@@ -58,6 +68,8 @@ class BidirectionalModel:
         print('Model compiled successfully')        
         
         return model
+
+    
 
     def train_model(self, data):
         pass
@@ -71,4 +83,4 @@ if __name__ == '__main__':
     model.build()
     print(model.summary())
 
-    plot_model(model, to_file='model_plot.png', show_shapes=True, show_layer_names=True)
+    # plot_model(model, to_file='model_plot.png', show_shapes=True, show_layer_names=True)
